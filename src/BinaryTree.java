@@ -1,22 +1,24 @@
 import java.util.LinkedList;
 import java.util.Queue;
 
-/**
- * 定义树节点数据结构
- * @author King
- */
-class Node {
-	public int data;
-	public Node left;
-	public Node right;
-	public Node(int data) {
-		this.data = data;
-		this.left = null;
-		this.right = null;
-	}
-}
+
 
 public class BinaryTree {
+	/**
+	 * 定义树节点数据结构
+	 * @author King
+	 */
+	private class Node {
+		public int data;
+		public Node left;
+		public Node right;
+		public Node(int data) {
+			this.data = data;
+			this.left = null;
+			this.right = null;
+		}
+	}
+	
 	private Node root;
 	public BinaryTree() {
 		root = null;

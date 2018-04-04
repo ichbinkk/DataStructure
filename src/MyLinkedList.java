@@ -1,8 +1,13 @@
 import java.util.*;
 
+/**
+ * 链表实现的线性表 
+ * @author King
+ * @param <Item>
+ */
 public class MyLinkedList<Item> {
 			
-	private Node head = null;	//保存链表头部
+	private Node head;	//保存链表头部
 	
 	/**定义结点的”内部类“
 	 * 
@@ -91,7 +96,10 @@ public class MyLinkedList<Item> {
 			p = p.next;
 		}
 	}
-		
+	
+	/**
+	 * 从头到尾输出单链表
+	 */
 	public void printList() {
 		Node tmp = head;
 		while(tmp != null) {
@@ -100,16 +108,98 @@ public class MyLinkedList<Item> {
 		}
 	}
 	
+	/**
+	 * 从尾到头输出单链表
+	 * @param x
+	 */
+	public void printListReversely(Node n) {
+		if(n.next != null)
+			printListReversely(n.next);
+	
+		System.out.println(n.item);
+	}
+	
+	/**
+	 * 检测链表是否为环
+	 * @param head
+	 */
+	public boolean isLoop(Node head) {
+		if(head == null) return false;
+		Node fast = head;
+		Node slow = head;
+		while(fast != null && fast.next != null) {
+			fast = fast.next.next;
+			slow = slow.next;
+			if(fast == slow)
+				return true;
+		}
+		return !(fast == null||fast.next == null);
+	}
+	
+	/**
+	 * 找到环的入口点
+	 * @param head
+	 * @return
+	 */
+	public Node findLoopPort(Node head) {
+		Node slow = head,fast = head;
+		while(fast != null && fast.next != null) {
+			fast = fast.next.next;
+			slow = slow.next;
+			if(fast == slow)
+				break;
+		}
+		if(fast == null||fast.next == null)
+			return null;
+		slow = head;
+		while(slow != fast) {
+			slow = slow.next;
+			fast = fast.next;
+		}
+		return slow;
+	}
+
+	/**
+	 * 不知道头结点的情况下删除指定结点
+	 * @param n
+	 * @return
+	 */
+	public boolean deleteNode(Node n) {
+		if(n == null || n.next == null)
+			return false;
+		n.item = n.next .item;
+		n.next = n.next.next;
+		return true;
+	}
+	
+	/**
+	 * 判断链表是否相交
+	 * @param n1
+	 * @param n2
+	 * @return
+	 */
+	public boolean isIntersect(Node n1,Node n2) {
+		if(n1 == null|| n2 == null)
+			return false;
+		while(n1.next != null)
+			n1 = n1.next;
+		while(n2.next != null)
+			n2 = n2.next;
+		return n1 == n2;
+	}
+	
 	public static void main(String[] args) {
 		MyLinkedList<String> list = new MyLinkedList<String>();
-		list.addNode("x");
-		list.addNode("x");list.addNode("x");
+		
+		list.addNode("x");list.addNode("x");list.addNode("x");
 		list.addNode("y");list.addNode("x");list.addNode("y");
-		list.addNode("z");
-		list.addNode("z");
+		list.addNode("z");list.addNode("z");
+		
 		list.printList();
 		System .out.println("***********");
 		list.deleteDuplecate();
 		list.printList();
+		System .out.println("***********");
+		list.printListReversely(list.head);
 	}
 }

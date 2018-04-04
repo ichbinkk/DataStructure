@@ -9,7 +9,13 @@ public class StringTest {
 	 * @param front
 	 * @param end
 	 */	
-	//反转任意字符串从front到end的函数
+	
+	/**
+	 * 反转任意字符串从front到end的函数
+	 * @param cArr
+	 * @param front
+	 * @param end
+	 */
 	public void swap(char[] cArr,int front,int end) {
 		while(front < end) {
 			char tmp = cArr[end];
@@ -20,7 +26,11 @@ public class StringTest {
 		}
 	}
 	
-	//先对整个字符串进行反转，再反转每个单词
+	/**
+	 * 先对整个字符串进行反转，再反转每个单词
+	 * @param s
+	 * @return
+	 */
 	public String swapWords(String s) {
 		char[] cArr = s.toCharArray();
 		//对整个字符串进行反转
@@ -39,12 +49,17 @@ public class StringTest {
 /**************************end**********************************/	
 	/**
 	 * <2>判断两个字符串是否由相同的字符组成 
-	 * 方法一：排序法 （不做讨论）
+	 * 方法1：排序法 （不做讨论）
 	 * 方法2：额外申请256大小的数组记录各个字符出现的次数
 	 * @param s1
 	 * @param s2
 	 */
-	//方法2：额外申请256大小的数组记录各个字符出现的次数
+	
+	/**
+	 * 方法2：额外申请256大小的数组记录各个字符出现的次数
+	 * @param s1
+	 * @param s2
+	 */
 	public static void compare(String s1,String s2) {
 		byte[] b1 = s1.getBytes();
 		byte[] b2 = s2.getBytes();

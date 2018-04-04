@@ -1,4 +1,3 @@
-import java.util.Spliterator;
 
 public class TestSort {
 	
@@ -139,17 +138,7 @@ public class TestSort {
 		quickSort(a,lo,j-1);
 		quickSort(a,j+1,hi);
 	}
-	
-	/**
-	 * 堆排序
-	 * 1.构建堆
-	 * 2.交换堆顶元素与最后一个元素的位置
-	 * @param a
-	 */
-	public static void heapSort(int[] a) {
 		
-	}
-	
 	//遍历打印出数组的数字
 	public static void show(int[] a) {
 		for(int i = 0;i < a.length;i++) {
